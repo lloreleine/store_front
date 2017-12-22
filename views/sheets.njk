@@ -1,0 +1,53 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+  <div class="card-deck container-fluid pt-3 m-1">
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text"><img src="http://www.decathlon.fr/media/{{article.image_path}}"></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">{{article.title}}</h3>
+      <h4 class="card-title">{{article.min_price}} €</h4>
+
+      <p>Rating of this article: {{article.rating}}<br/>
+      <span class="fa fa-star {% if article.rating >1 %}checked{% endif %}"></span>
+      <span class="fa fa-star {% if article.rating >2 %}checked{% endif %}"></span>
+      <span class="fa fa-star {% if article.rating >3 %}checked{% endif %}"></span>
+      <span class="fa fa-star {% if article.rating >4 %}checked{% endif %}"></span>
+      <span class="fa fa-star {% if article.rating >5 %}checked{% endif %}"></span>
+      </p>
+      <p class="card-text">{{article.description}}</p>
+
+      <form action="/form" method="post">
+        <div>
+          <label for="comm"><em>- Laissez-nous votre commentaire -</em></label>
+        </div>
+        <div class="mb-2">
+          <label for="nom">Votre nom :</label>
+          <input type="text" id="nom" name="user_name" />
+        </div>
+        <div>
+          <textarea name="com" id="message" placeholder="Qu'avez-vous pensé de cet article ?" style="float: left; width: 100%; height: auto;"></textarea>
+        </div>
+
+        <div>
+          <span class="satis-text">De manière globale, êtes-vous satisfait de ce produit ?</span>&nbsp;&nbsp;
+          <input type="radio" name="satis" value="oui" /> <label for="oui">Oui</label>
+          <input type="radio" name="satis" value="non" /> <label for="non">Non</label><br />
+        </div>
+
+        <div class="button mt-3">
+          <button type="submit">Envoyer</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

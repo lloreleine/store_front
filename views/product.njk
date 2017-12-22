@@ -1,0 +1,24 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="container text-center">
+      <div class="row pt-5">
+
+      {% for element in products %}
+
+        <div class="col bg-white pt-3 m-1 border border-secondary">
+          <img src="http://www.decathlon.fr/media/{{element.image_path}}">
+          <p class="text-center pt-2 text-primary" style="text-decoration:none;">
+            <a href="../article/{{element.id}}">{{element.title}}</a>
+          </p>
+        </div>
+
+      {% endfor %}
+
+      </div>
+    </div>
+</div>
+
+{% endblock %}

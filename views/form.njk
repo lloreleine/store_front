@@ -1,0 +1,37 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<div class="container-fluid mt-5 text-center">
+  <h5>Merci {{data.user_name}} !</h5>
+  <p class="mt-3">Votre commentaire est le suivant :</em><br/>
+    <em>"{{data.com}}"</em>
+  </p>
+
+  <div class="container text-center">
+    <div class="row pt-3">
+      <div class="col">
+        <a href="./"><i class="fas fa-backward"></i></a>
+      </div>
+      <div class="col" style="width:400px; overflow:hidden">
+        <a href="http://www.decathlon.fr"><img src="../images/logo-decat.jpg" style="width:100px; margin: 0 -100px;"/></a>
+      </div>
+      <div class="col">
+        <a href="./"><i class="fas fa-cart-arrow-down"></i></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        Retour à la fiche article
+      </div>
+      <div class="col text-dark" style="text-decoration:none;">
+        <a href="http://www.decathlon.fr">Decathlon.fr</a>
+      </div>
+      <div class="col">
+        Ajouter au panier
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
