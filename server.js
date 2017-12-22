@@ -45,14 +45,35 @@ app.get("/article/:art", function(request, result) {
       {method: "GET"}
     )
     .then((response) => response.json())
-    .then((resultProd) => {
-      result.render("sheets", {article:resultProd});
+    .then(function(resultProd) {
+      const new_price = resultProd.min_price.toFixed(2);
+      const article = {
+        id:resultProd.id,
+        decathon_id:resultProd.decathon_id,
+        title:resultProd.title,
+        description:resultProd.description,
+        brand_id:resultProd.brand_id,
+        min_price:new_price,
+        max_price:resultProd.max_price,
+        crossed_price:resultProd.crossed_price,
+        percent_reduction:resultProd.percent_reduction,
+        image_path:resultProd.image_path,
+        rating:resultProd.rating
+      };
+      console.log(new_price);
+      return article;
+    })
+    .then((resultNew) => {
+      result.render("sheets", {article:resultNew});
     });
 });
 
-app.post("/form", function(request, result) {
+app.post("/form/:id", function(request, result) {
   // console.log(request.body);
-  result.render("form", {data:request.body});
+  result.render("form", {
+    data:request.body,
+    product_id:request.params.id
+  });
 });
 
 
